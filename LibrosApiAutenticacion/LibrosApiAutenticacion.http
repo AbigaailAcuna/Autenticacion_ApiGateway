@@ -1,0 +1,6 @@
+@LibrosApiAutenticacion_HostAddress = http://localhost:5091
+
+GET {{LibrosApiAutenticacion_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
