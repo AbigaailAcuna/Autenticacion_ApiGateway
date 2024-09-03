@@ -23,15 +23,16 @@ var app = builder.Build();
 // autenticación para API Key
 app.Use(async (context, next) =>
 {
-    const string apiKeyHeaderName = "Authorization";
+    const string HeaderName = "Authorization";
     const string apiKey = "Api123456"; 
 
-    if (context.Request.Headers.TryGetValue(apiKeyHeaderName, out var extractedApiKey))
+    if (context.Request.Headers.TryGetValue(HeaderName, out var extractedApiKey))
     {
         if (extractedApiKey == apiKey)
         {
-            // La autenticación fue exitosa
-            context.Response.Headers.Add("X-ApiKey-Status", "Valid");
+           // context.Response.ContentType = "text/plain";
+        //    context.Response.StatusCode = StatusCodes.Status200OK;
+          //  await context.Response.WriteAsync("Autenticado");
             await next();
             return;
         }
